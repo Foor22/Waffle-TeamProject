@@ -15,9 +15,9 @@ window.history.forward();
 
 $(function() {
 	//로그인 버튼 클릭
-	$("#btnLogin").click(function() {
+	/* $("#btnLogin").click(function() {
 		location.href="${path}/waffleMember/login.do";
-	});
+	}); */
 	//로그아웃 버튼 클릭
 	$("#btnLogout").click(function() {
 		location.href="${path}/waffleMember/logout.do";
@@ -80,7 +80,7 @@ $(function() {
 			//폼 데이터를 제출할 주소
 			document.form1.action="${path}/waffleMember/delete.do";
 			//폼 데이터를 서버에 제출
-			document.form1.submit();	
+			document.form1.submit();
 		}
 	});
 });
@@ -282,7 +282,7 @@ font{
 }
 
 /* 로그인 버튼 */
-#btnLogin {
+/* #btnLogin {
 	font-family: "Unica One", cursive;
 	font-size: 20px;
 	float: right;
@@ -295,7 +295,7 @@ font{
 #btnLogin:hover {
     color: #ffffff;
     background-color: #000000;
-}
+} */
 
 /* 중복체크 안내 */
 #guide {
@@ -345,7 +345,7 @@ font{
 	<c:otherwise>
 		<nav class="head_content_2">
 			<a href="${path}"><font>W a f f l e</font></a>
-			<button type="button" id="btnLogin">LOGIN</button>
+			<!-- <button type="button" id="btnLogin">LOGIN</button> -->
 		</nav>
 	</c:otherwise>
 </c:choose>

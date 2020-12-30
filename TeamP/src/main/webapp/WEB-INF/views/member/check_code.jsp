@@ -10,7 +10,7 @@
 $(function() {
 	//만약 info_view에서 뒤로가기를 클릭했을 시 코드를 입력하면 null처리된 이메일 때문에 페이지 로딩이 되지 않는 에러 수정
 	var email="${sessionScope.email}";
-	var code=${sessionScope.code};
+	var code=${sessionScope.code}+0;
 	//null값으로 처리된 email을 다시 원상복구시켜준다.
 	var param = { "email" : email , "code" : code };
 	$.ajax({

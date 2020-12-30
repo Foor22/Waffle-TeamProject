@@ -11,9 +11,25 @@
 </head>
 <script type="text/javascript">
 $(function() {
+	//만약 info_view에서 와플 로고(홈 화면으로 이동)를 클릭했을 시 코드를 입력하면 null처리된 이메일 때문에 페이지 로딩이 되지 않는 에러 수정
+	var email="${sessionScope.email}";
+	var code=${sessionScope.code}+0;
+	//null값으로 처리된 email을 다시 원상복구시켜준다.
+	var param = { "email" : email , "code" : code };
+	$.ajax({
+		type:"post",
+		url:"${path}/waffleMember/email_put.do",
+		data:param,
+		success:function() {
+			console.log();
+		}
+	});
+	
+	//로그인 버튼 클릭
 	$(".btnLogin").click(function() {
 		location.href="${path}/waffleMember/login.do";
 	});
+	//회원가입 버튼 클릭
 	$("#btnJoin").click(function() {
 		location.href="${path}/waffleMember/join.do";
 	});

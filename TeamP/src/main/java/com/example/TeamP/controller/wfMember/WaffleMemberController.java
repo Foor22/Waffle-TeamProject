@@ -195,7 +195,7 @@ public class WaffleMemberController {
 				//인증 코드 생성(계정 찾는데 사용)
 				double rand = Math.random();
 				int certify=(int)(rand * 1000000);
-				//인증 코드 세션 영역에 저장(뒤로가기 눌렀을 때 이메일 null값처리에서 값 생성해주기)
+				//인증 코드 세션 영역에 저장(뒤로가기 눌렀을 때, 홈 화면으로 이동했을 때 이메일 null값처리에서 값 생성해주기)
 				session.setAttribute("code", certify);
 				
 				//인증 코드를 입력한 email에 해당되는 DB row에 입력해야함.
@@ -238,7 +238,7 @@ public class WaffleMemberController {
 		dto.setEmail((String)session.getAttribute("email"));
 		dto.setC_code(c_code);
 		boolean result=wfmemberService.codeCheck(dto);
-		//session영역에 있던 email을 불러오면 session 초기화 -- 만약 뒤로가기 후 코드를 재입력했을 때 email에 null값이 들어가는 것을 방지하기 위해서 취소
+		//session영역에 있던 email을 불러오면 session 초기화 -- 만약 뒤로가기 후 코드를 재입력했을 때, 홈 화면으로 이동했을 때 email에 null값이 들어가는 것을 방지하기 위해서 취소
 		//session.invalidate();
 		
 		//포워딩을 위해 ModelAndView 객체 선언	--> ModelAndView는 포워드, 리다이렉트 방식 둘 다 이용 가능하다. 참조 : https://codediver.tistory.com/77
