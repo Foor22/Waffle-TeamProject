@@ -40,10 +40,16 @@ footer h5 {
 	font-size: 18px;
 	color: lightgray;
 }
+.container li:nth-child(1)>a {
+	font-size: 20px;
+}
 .container a:hover {
 	color: #f3e6ff;
 	font-size: 20px;
 	text-shadow: 1px 1px 1em lightgray;
+}
+.container li:nth-child(1)>a:hover {
+	font-size: 25px;
 }
 .end {
 	clear: both;

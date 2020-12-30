@@ -11,6 +11,7 @@
 			<div>
 				<h4>QUICK LINKS</h4>
 				<ul>
+					<li><a href="${path}/waffleContent/main_view.do">Waffle</a></li>
 					<li><a href="${path}/waffleContent/movie.do">MOVIE</a></li>
 					<li><a href="${path}/waffleContent/drama.do">DRAMA</a></li>
 					<li><a href="${path}/waffleBoard/list.do">COMMUNITY</a></li>
