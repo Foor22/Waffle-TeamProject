@@ -323,7 +323,7 @@ public class WaffleContentController {
 	//액션
 	@RequestMapping("drama_action.do")
 	public ModelAndView drama_action(ModelAndView mav) {
-		List<WaffleContentDTO> list = wfContService.movie_action();
+		List<WaffleContentDTO> list = wfContService.drama_action();
 		//사진 리스트가 제대로 가져와졌는지 console창으로 출력해서 확인
 		System.out.println("액션");
 		for(WaffleContentDTO dto : list)

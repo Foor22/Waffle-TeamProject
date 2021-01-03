@@ -580,7 +580,7 @@ textarea {
 				<ul>
 					<li>
 						<h4 face="malgun gothic">RATED</h4>
-				    	<h3>${dto.rated}세</h3>  
+				    	<h3>${dto.rated}</h3>  
 					</li>
 					<li>
 						<h4 face="malgun gothic">GENRE</h4>

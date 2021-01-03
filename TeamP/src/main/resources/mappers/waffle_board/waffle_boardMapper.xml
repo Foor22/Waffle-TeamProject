@@ -68,10 +68,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		((select nvl(max(bno)+1,1) from wf_board), #{title}, #{content}, #{writer})
 	</insert>
 	
-	<!-- 글수정 -->
+	<!-- 글수정 (날짜도 업데이트 되도록 설정 - sysdate가 아닌 systimestamp를 사용해야 시,분,초 모두 업데이트가 된다) -->
 	<update id="update">
 		update wf_board
-		set title=#{title}, content=#{content}
+		set title=#{title}, content=#{content}, regdate=systimestamp
 		where bno=#{bno}
 	</update>
 	

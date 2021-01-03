@@ -18,6 +18,13 @@ $(function() {
 		if(confirm("댓글을 등록하시겠습니까?")){
 			var replytext=$("#replytext").val(); //댓글 내용
 			var bno="${dto.bno}"; //게시물 번호
+
+			if(replytext=="") {
+				alert("댓글 내용을 입력해주세요");
+				$("#replytext").focus();
+				return;
+			}
+			
 			var param={ "replytext": replytext, "bno": bno};
 			//var param="replytext="+replytext+"&bno="+bno;
 			$.ajax({

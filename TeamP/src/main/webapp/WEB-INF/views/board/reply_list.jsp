@@ -3,12 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("newLineChar", "\n"); %>
+<table class="reply">
+<!-- fn: header.jsp의 jstl -->
+<c:forEach var="row" items="${list}">
 <script type="text/javascript">
-function delReply() {
+function del_${row.rno}() {
 	if(confirm("댓글을 삭제하시겠습니까?")){
-		var replyer=$("#replyer").val();
-		var rno=$("#rno").val();
-		var bno=$("#bno").val();
+		var replyer=$(".${row.replyer}").val();
+		var rno=$("#${row.rno}").val();
+		var bno=$(".${row.bno}").val();
 		var param="replyer="+replyer+"&rno="+rno+"&bno="+bno;
 		$.ajax({
 			type : "post",
@@ -22,10 +26,6 @@ function delReply() {
 	}
 }
 </script>
-<% pageContext.setAttribute("newLineChar", "\n"); %>
-<table class="reply">
-<!-- fn: header.jsp의 jstl -->
-<c:forEach var="row" items="${list}">   
 	<c:set var="str" value="${fn:replace(row.replytext,'<','&lt;') }" />
 	<c:set var="str" value="${fn:replace(str,'>','&gt;') }" />	
 	<c:set var="str" value="${fn:replace(str,'  ','&nbsp;&nbsp;')}" />
@@ -43,19 +43,19 @@ function delReply() {
 			<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd a HH:mm:ss" />
 		</td>
 	<!-- 해당 댓글 작성자가 아닐 시 (삭제 칸 생성으로 인해 테이블 ui가 깨지는 것을 방지) -->
-	<c:if test="${sessionScope.userid != row.replyer}">
+	<%-- <c:if test="${sessionScope.userid != row.replyer && sessionScope.admin_userid == null}">
 		<td>
 		</td>
-	</c:if>
+	</c:if> --%>
 	<!-- 댓글 삭제는 작성자, 관리자만 가능 -->
-	<c:if test="${sessionScope.userid == row.replyer || sessionScope.admin_userid != null}">
 		<td width="10%" style="padding-right: 30px">
-			<input type="hidden" id="replyer" value="${row.replyer}">
-			<input type="hidden" id="rno" value="${row.rno}">
-			<input type="hidden" id="bno" value="${row.bno}">
-			<button type="button" id="del" onclick="delReply()">Delete</button>
+			<input type="hidden" class="${row.replyer}" value="${row.replyer}">
+			<input type="hidden" id="${row.rno}" value="${row.rno}">
+			<input type="hidden" class="${row.bno}" value="${row.bno}">
+		<c:if test="${sessionScope.userid == row.replyer || sessionScope.admin_userid != null}">
+			<button type="button" onclick="del_${row.rno}()">Delete</button>
+		</c:if>
 		</td>
-	</c:if>
 	</tr>
-</c:forEach>	
+</c:forEach>
 </table>
