@@ -12,8 +12,14 @@ window.history.forward();
 
 $(function() {
 	$("#btnFind").click(function() {
-		document.form1.action="${path}/waffleMember/send.do";
-		document.form1.submit();
+		if($("#email").val()=='') {
+			alert("이메일을 입력하세요");
+			$("#email").focus();
+			return;
+		} else {
+			document.form1.action="${path}/waffleMember/send.do";
+			document.form1.submit();
+		}
 	});
 	$("#btnJoin").click(function() {
 		location.href="${path}/waffleMember/join.do";
